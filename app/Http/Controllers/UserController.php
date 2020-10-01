@@ -28,10 +28,10 @@ class UserController extends Controller
     $id = $user->id;
     
     // Validación del formulario
-    $validate = $this->validate($request, [
+		$validate = $this->validate($request, [
             'name' => 'required|string|max:255',
-      'surname' => 'required|string|max:255',
-      'nick' => 'required|string|max:255|unique:users,nick,'.$id,
+			'surname' => 'required|string|max:255',
+			'nick' => 'required|string|max:255|unique:users,nick,'.$id,
             'email' => 'required|string|email|max:255|unique:users,email,'.$id
         ]);
     
