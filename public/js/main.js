@@ -1,4 +1,4 @@
-var url = 'http://proyecto-laravel.com.devel';
+var url = 'http://insta.local';
 window.addEventListener("load", function(){
 	
 	$('.btn-like').css('cursor', 'pointer');

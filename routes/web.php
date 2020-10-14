@@ -47,11 +47,39 @@ Route::post('/user/update','UserController@update')->name('user.update');
 Route::get('/user/avatar/{filename}','UserController@getImage')->name('user.avatar');
 
 Route::get('/subir-imagen', 'ImageController@create')->name('image.create');
-Route::post('/image/save', 'ImageController@store')->name('image.save');
+Route::post('/image/save', 'ImageController@save')->name('image.save');
 
 
 // foto de perfil
+Route::get('/image/file/{filename}','ImageController@getImage')->name('image.file');
 
 
 //perfil
 Route::get('/perfil/{id}', 'UserController@profile')->name('profile');
+
+// imagen detalles
+
+Route::get('/imagen/{id}','ImageController@detail')->name('image.detail');
+
+//comentarios
+Route::post('/commnet/save','CommentController@save')->name('comment.save');
+Route::get('/commnet/delete/{id}','CommentController@delete')->name('comment.delete');
+
+
+// LIKES
+Route::get('/like/{image_id}', 'LikeController@like')->name('like.save');
+Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.delete');
+Route::get('/likes', 'LikeController@index')->name('likes');
+
+// eliminar imagen
+
+Route::get('/image/delete/{id}','ImageController@delete')->name('image.delete');
+//editar imagen
+
+Route::get('/image/editar/{id}', 'ImageController@edit')->name('image.edit');
+Route::post('/image/update', 'ImageController@update')->name('image.update');
+
+//gente
+
+Route::get('/gente', 'UserController@index')->name('user.index');
+Route::get('/gente/{search?}', 'UserController@index')->name('user.index');

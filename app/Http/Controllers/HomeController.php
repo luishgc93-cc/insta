@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $images = image::orderBy('id', 'desc')->get();
+        $images = image::orderBy('id', 'desc')->paginate(4);
 
 
         return view('home',[

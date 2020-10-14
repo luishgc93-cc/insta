@@ -15,7 +15,23 @@ class UserController extends Controller
         $this->middleware('auth');
     }
   
+  public function index($search = null){
+    if(!empty($search)){
+      $users = User::where('nick', 'LIKE', '%'.$search. '%')
+      ->orWhere('name','LIKE', '%'.$search. '%')
+      ->orWhere('surname','LIKE', '%'.$search. '%')   
+      ->orderBy('id', 'desc')
+      ->paginate(2);
 
+}else{
+  $users = User::orderBy('id', 'desc')->paginate(2);
+}
+
+
+    return view('user.index',[
+      'users'=> $users
+    ]);
+  }
   
   public function config(){
     return view('user.config');
@@ -81,7 +97,7 @@ public function getImage($filename){
   	$user = User::find($id);
 
   	return view('user.profile',[
-  		'user' => $user,
+  		'user' => $user
   	]);
   }
 

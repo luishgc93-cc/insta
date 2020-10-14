@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-	    protected $guarded = ['id']; // Te faltaría esta línea
-
     protected $table = 'images';
 	
 	// Relación One To Many / de uno a muchos
@@ -24,10 +22,5 @@ class Image extends Model
 	public function user(){
 		return $this->belongsTo('App\User', 'user_id');
 	}
-
-public function setPathAttribute($file)
-{
-    $this->attributes['path'] =  Storage::put('users/' . Auth::user()->id . '/images', $file);   
-}
 	
 }
